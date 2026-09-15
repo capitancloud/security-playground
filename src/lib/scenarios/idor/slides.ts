@@ -85,7 +85,7 @@ export const idorSlides: Slide[] = [
   {
     kicker: "Task 09 · Client bypass",
     title: "Il browser non è una difesa",
-    body: "Un bottone «disabled» blocca solo il click nel tuo browser. Lo togli con DevTools in due secondi e l'azione parte lo stesso, se il server non ricontrolla. Nel task fisserai questo principio in pratica.",
+    body: "Un bottone «disabled» blocca solo il click nel tuo browser. Lo togli con DevTools in due secondi e l'azione parte lo stesso, se il server non ricontrolla. Nel task vedrai questo principio in pratica.",
     note: "Nascondere all'utente normale non equivale a difendersi: un attaccante vede tutto ciò che l'app manda e può eseguire qualunque azione, non solo quelle mostrate dall'interfaccia.",
     icon: "Unlock",
   },
