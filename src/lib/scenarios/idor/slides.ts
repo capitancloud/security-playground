@@ -78,7 +78,7 @@ export const idorSlides: Slide[] = [
     kicker: "Task 08 · API REST",
     title: "Stesso attacco, ancora più veloce",
     body: "Le API mostrano le cose direttamente: GET /api/users/42 restituisce il profilo 42 come JSON. Non c'è una pagina che filtra o rallenta: cambi il numero e subito arriva il risultato.",
-    note: "Il pattern non cambia — cambi solo il numero — ma l'impatto è più grande: le API sono fatte per essere chiamate in serie, esattamente ciò che serve all'attacco.",
+    note: "Il pattern non cambia — cambi solo il numero — ma l'impatto è più grande: le API sono fatte per essere chiamate in serie, esattamente ciò che serve all'attaccante.",
     accent: "danger",
     icon: "Network",
   },
