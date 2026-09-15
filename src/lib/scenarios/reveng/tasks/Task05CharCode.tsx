@@ -94,7 +94,7 @@ function Panel({
           Decodifica in ASCII
         </button>
       ) : (
-        <div className="rounded border border-success/40 bg-success/10 p-2 font-mono text-[12px] text-ivory">
+        <div className="overflow-x-auto rounded border border-success/40 bg-success/10 p-2 font-mono text-[12px] break-all whitespace-normal text-ivory">
           {decoded}
         </div>
       )}
