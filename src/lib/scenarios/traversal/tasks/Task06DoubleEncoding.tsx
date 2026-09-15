@@ -41,21 +41,33 @@ export default function Task06DoubleEncoding({ markComplete, isComplete }: TaskC
       </BrowserFrame>
 
       {!isComplete && (
-        <InfoNote>
-          Nuova policy: il server decodifica una volta, poi filtra i <code>..</code>. Ma da qualche
-          parte c'è un secondo decoder. Codifica <em>due volte</em>:{" "}
-          <code className="text-gold">%25</code> è il <code>%</code> codificato. Prova{" "}
-          <code className="text-gold">
-            ?file=%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252fetc%252fpasswd
-          </code>
-          .
-        </InfoNote>
+        <>
+          <InfoNote>
+            Il filtro ora lavora bene: decodifica la stringa, cerca i «..» letterali e li blocca.
+            Con una sola codifica non entri più. Il punto debole è un altro: prima di arrivare
+            all'applicazione la richiesta passa per più componenti (proxy, framework), e più di
+            uno decodifica l'URL. Il trucco è codificare <em>due volte</em>. Ricorda che il
+            simbolo % si scrive <code className="text-gold">%25</code>, quindi il punto{" "}
+            <code className="text-gold">%2e</code> diventa{" "}
+            <code className="text-gold">%252e</code>. Al primo giro la stringa torna{" "}
+            <code>%2e%2e%2f</code>: il filtro non vede ancora «..» e lascia passare. Al secondo
+            giro diventa <code>../</code>, quando ormai il controllo è passato.
+          </InfoNote>
+          <div className="mt-4 rounded-lg border border-border bg-surface p-4">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground">
+              Payload da provare
+            </p>
+            <code className="mt-2 block break-all font-mono text-sm leading-relaxed text-gold">
+              ?file=%252e%252e%252f%252e%252e%252f%252e%252e%252f%252e%252e%252fetc%252fpasswd
+            </code>
+          </div>
+        </>
       )}
 
       {usedSingle && !file && (
         <WarnNote>
-          Con la singola codifica ti sei fatto beccare dal filtro. Passa alla doppia
-          (<code>%25</code> = <code>%</code>).
+          Il filtro ha visto i «..» dopo la prima decodifica e ti ha bloccato. Nascondili anche
+          dal primo giro: codifica <em>due volte</em> (ricorda: <code>%25</code> = <code>%</code>).
         </WarnNote>
       )}
 
