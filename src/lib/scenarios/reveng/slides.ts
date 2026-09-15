@@ -4,8 +4,8 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Scenario 04 · Panoramica",
     title: "Reverse Engineering (base)",
-    body: "Il reverse engineering è l'arte di capire cosa fa un programma leggendolo, senza eseguirlo. In questo scenario trovi un update.ps1 che sembra un aggiornamento innocuo sul PC di un utente, e lo smontiamo pezzo per pezzo: prima lo leggiamo, poi scopriamo cosa nasconde, infine scriviamo lo script che cancella i suoi effetti.",
-    note: "Non è magia nera: è metodo. Tutti i programmi malevoli fatti in fretta usano gli stessi pochi trucchi per nascondersi — e noi li vedremo tutti, uno alla volta.",
+    body: "Il reverse engineering significa capire cosa fa un programma leggendolo, senza mai eseguirlo. È quello che fa un meccanico quando smonta un motore per vedere com'è fatto dentro.\nIn questo scenario trovi sul computer di un utente un file chiamato update.ps1. Sembra un aggiornamento innocuo, ma non lo è. Lo smontiamo pezzo per pezzo: prima lo leggiamo, poi scopriamo cosa nasconde, infine scriviamo lo script che cancella i suoi effetti.",
+    note: "Non è magia nera: è metodo. I programmi malevoli fatti in fretta usano sempre gli stessi pochi trucchi per nascondersi. In questo modulo li vedremo tutti, uno alla volta.",
     bullets: [
       "Leggere un codice è il primo passo per difendersi",
       "Tre livelli di nascondiglio, ognuno più tosto del precedente",
@@ -17,20 +17,20 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 01 · Le basi",
     title: "Com'è fatto uno script PowerShell",
-    body: "Prima di smontare un problema, bisogna saper leggere il linguaggio. PowerShell è il linguaggio con cui si amministra Windows: ogni comando ha la forma Verbo-Nome (Get-Date, Write-Host, Set-ItemProperty), le variabili iniziano con $, i commenti con #.",
-    note: "Sono le tre cose che ti servono per non essere in balia dello script sospetto del prossimo task. Guarda lo script PowerShell più innocuo possibile: «ciao mondo con la data di oggi».",
+    body: "Prima di smontare qualcosa, bisogna saper leggere il linguaggio in cui è scritto. PowerShell è il linguaggio con cui si amministra Windows: se un attaccante vuole controllare un PC Windows, quasi sempre lo fa con PowerShell.\nLa buona notizia: le regole sono poche e semplici. Ogni comando ha la forma Verbo-Nome: Get-Date significa «prendi la data», Write-Host significa «scrivi sullo schermo». Le variabili iniziano tutte con il simbolo $, i commenti iniziano con # e servono solo a spiegare il codice a chi legge.",
+    note: "Sono le tre cose che ti servono per leggere lo script sospetto del prossimo task. Nel task vedi uno script PowerShell più innocuo possibile: «ciao mondo con la data di oggi».",
     bullets: [
       "Comandi = Verbo-Nome: Get-Date, Write-Host",
-      "Variabili = $nome",
-      "Commenti = # riga di spiegazione",
+      "Variabili = $nome (il $ dice «questa è una variabile»)",
+      "Commenti = # riga di spiegazione, il computer la ignora",
     ],
     icon: "BookOpen",
   },
   {
     kicker: "Task 02 · Primo sguardo",
     title: "Lo script sospetto: cosa tradisce le cattive intenzioni",
-    body: "Arriva lo script sospetto: update.ps1, che sembra scaricare un aggiornamento. Il primo passo è guardarlo senza eseguirlo, cercando le parole che tradiscono le cattive intenzioni: codice nascosto, download, esecuzione nascosta, avvio automatico a ogni accensione.",
-    note: "Lo script mostra, solo per far vedere come funziona, una simulazione di avvio automatico nel registro di Windows (chiave Run), un download di %TEMP%\\a.ps1 e l'esecuzione. Mai eseguito davvero.",
+    body: "Arriva lo script sospetto: update.ps1, che finge di essere un aggiornamento. La regola numero uno del reverse engineering è: non eseguirlo mai. Si legge, si guarda, si analizza — ma non si preme invio.\nCosa cerchiamo mentre lo leggiamo? Le parole che tradiscono le cattive intenzioni: codice nascosto, un download da un indirizzo strano, l'esecuzione nascosta e l'avvio automatico a ogni accensione del PC. Basta trovarne un paio insieme per capire che quello script non è un aggiornamento.",
+    note: "Lo script mostra, solo per far vedere come funziona, una simulazione di avvio automatico nel registro di Windows (la chiave Run), un download in %TEMP%\\a.ps1 e la sua esecuzione. Tutto display-only: non viene mai eseguito davvero.",
     bullets: [
       "-EncodedCommand: codice nascosto in Base64",
       "Chiave Run del registro = si avvia a ogni accensione",
@@ -42,10 +42,10 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 03 · Primo nascondiglio",
     title: "Decodificare Base64",
-    body: "-EncodedCommand riceve il comando scritto in Base64 con testo UTF-16LE. Nel task decodifichiamo davvero la stringa nel browser e scopriamo cosa lo script fa in realtà: dietro quella fila di lettere senza senso c'era un semplice comando PowerShell.",
-    note: "Base64 non è crittografia: è solo una codifica, chiunque la può leggere. Esempio: PowerShell -EncodedCommand <base64> → decodifica → il comando reale, chiaro e leggibile.",
+    body: "Il primo nascondiglio si chiama -EncodedCommand. Invece di scrivere il comando in chiaro, l'attaccante lo trasforma in una fila di lettere senza senso: quella codifica si chiama Base64.\nQui viene il bello: Base64 non è un segreto. Non è crittografia, è solo un modo diverso di scrivere la stessa cosa — come scrivere una parola al contrario. Chiunque può tornare indietro, e nel task lo facciamo davvero: decodifichiamo la stringa nel browser e leggiamo il comando che c'era dietro.",
+    note: "Esempio del flusso: PowerShell -EncodedCommand <base64> → decodifica → il comando reale, chiaro e leggibile. Attenzione a un dettaglio: la stringa è in formato UTF-16LE, cioè due byte per ogni carattere — il task se ne occupa per te.",
     bullets: [
-      "Base64 = maschera, non segreto",
+      "Base64 = maschera, non segreto: si decodifica sempre",
       "UTF-16LE: due byte per ogni carattere",
       "Decodifica senza eseguire: leggere è sicuro",
     ],
@@ -55,10 +55,10 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 04-05 · Secondo nascondiglio",
     title: "Codice smontato e rimontato",
-    body: "Il malware non basta nascondersi in Base64: smonta le stringhe in pezzi e le rimonta a runtime. Nel task 4 ricostruiamo un Invoke-Expression nascosto nella concatenazione; nel task 5 decodifichiamo un array di numeri che rappresentano lettere.",
-    note: "Sono due varianti dello stesso trucco: «scrivere le cose in un modo in cui non si capisce al volo, ma che il computer ricostruisce da solo». Esempio: [char[]](72,73) → 'HI'.",
+    body: "Il malware non si ferma a Base64: smonta le stringhe in pezzi e le rimonta all'ultimo momento, quando il programma gira. Chi legge il codice trova solo pezzi sparsi; il computer, invece, li ricompone da solo.\nSono due varianti dello stesso trucco. Nel task 4 troviamo un comando Invoke-Expression (che significa «esegui quello che leggi») nascosto nella concatenazione di stringhe spezzate. Nel task 5 decodifichiamo un array di numeri: ogni numero è il codice di una lettera, quindi 72 diventa H e 73 diventa I.",
+    note: "Esempio: [char[]](72,73) → 'HI'. Il computer conosce la tavola dei caratteri e riconstruisce il messaggio. Tu fai la stessa cosa al contrario: parti dai numeri e risali alle lettere.",
     bullets: [
-      "Concatenazione: stringhe spezzate e ricomposte",
+      "Concatenazione: stringhe spezzate e ricomposte al volo",
       "Char-code: ogni lettera diventa un numero",
       "Lo schema si ripete: ricostruisci → leggi → capisci",
     ],
@@ -68,7 +68,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 06 · Terzo nascondiglio",
     title: "XOR: ogni lettera mescolata con un numero segreto",
-    body: "Terzo e ultimo livello: XOR. Ogni lettera del messaggio viene «mescolata» con un numero segreto (la chiave). Con lo stesso numero, l'operazione si annulla: applichi XOR con la chiave al messaggio cifrato e torna in chiaro. Nel task la trovi muovendo uno slider da 1 a 255.",
+    body: "Terzo e ultimo livello: XOR. È un'operazione matematica semplicissima che «mescola» ogni lettera del messaggio con un numero segreto, chiamato chiave. Il risultato sembra rumore casuale.\nMa XOR ha una proprietà che lo rende debole: è reversibile. Se applichi di nuovo la stessa chiave al testo mescolato, torna tutto in chiaro — la mescolanza si annulla. E siccome qui la chiave è un solo numero (da 1 a 255), le possibilità sono finite: basta provarle tutte. Nel task lo fai muovendo uno slider e guardando il testo apparire.",
     note: "XOR con una chiave singola è indecifrabile in teoria ma debole in pratica: prova tutti i 256 numeri possibili e uno è quello giusto — esattamente quello che farai con lo slider.",
     bullets: [
       "XOR è reversibile: stesso numero per nascondere e mostrare",
@@ -81,7 +81,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 07 · L'aiuto dell'AI",
     title: "Farsi aiutare dall'AI con le domande giuste",
-    body: "Ora che conosci lo script, proviamo a farci aiutare dall'AI. La differenza tra una risposta utile e una generica sta tutta nella domanda: dal contesto (che tipo di file, dove l'hai trovato) alla richiesta precisa (che cosa vuoi sapere, in che formato).",
+    body: "Ora che conosci lo script, proviamo a farci aiutare dall'AI. L'AI legge il codice molto in fretta, ma la qualità della risposta dipende tutta dalla domanda che gli fai.\nUna domanda vaga («questo file è pericoloso?») porta a una risposta vaga. Una domanda precisa porta a un'analisi precisa: gli dici che tipo di file è, dove l'hai trovato, e cosa vuoi sapere — il comportamento passo per passo, gli indicatori di compromissione, e lo script che annulla i danni.",
     note: "Regola d'oro: non chiedere «dimmi se questo è pericoloso» — chiedi «spiega passo per passo cosa fa questo script, elenca gli indicatori di compromissione e scrivi lo script che annulla i suoi effetti».",
     bullets: [
       "Contesto: tipo di file, dove l'hai trovato",
@@ -93,7 +93,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 08 · Verifica",
     title: "Capire cosa fa davvero lo script",
-    body: "L'AI ti ha dato un'analisi, ma non va presa per buona: un analista verifica. Nel task classifichi tu il comportamento reale dello script — avvio automatico, download, esecuzione remota — scegliendo le categorie giuste tra quelle proposte.",
+    body: "L'AI ti ha dato la sua analisi. Ma un'analisi automatica non va presa per buona: verificarla è il tuo lavoro. L'AI ti dà un punto di partenza, non una conclusione.\nNel task fai esattamente questo: classifichi tu il comportamento reale dello script, scegliendo le categorie giuste tra quelle proposte. Si avvia da solo al riavvio? Scarica file da internet? Li esegue? Se le tue risposte combaciano con quello che hai letto nei task precedenti, l'analisi è corretta.",
     note: "Mai fidarsi ciecamente di un'analisi automatica: è il punto di partenza, non la conclusione. La verifica umana è parte del lavoro.",
     accent: "danger",
     icon: "ClipboardCheck",
@@ -101,7 +101,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 09 · Controcolpo",
     title: "Scrivere lo script che «sistema tutto»",
-    body: "Qui si chiude il cerchio: dal capire al riparare. Scrivi lo script inverso che rimuove la chiave di avvio automatico dal registro, elimina i file scaricati e lascia il sistema pulito come prima. Ogni riga corrisponde a un danno che abbiamo visto prima.",
+    body: "Qui si chiude il cerchio: dal capire al riparare. Se sai esattamente cosa ha fatto il malware, sai anche esattamente cosa riparare.\nNel task scrivi lo script inverso: rimuove la chiave di avvio automatico dal registro, elimina i file scaricati e lascia il sistema pulito come prima. Ogni riga di pulizia corrisponde a un danno che abbiamo visto nei task precedenti — niente di inventato, niente di dimenticato.",
     note: "Esempio: se il malware ha scritto in HKCU:\\Software\\...\\Run\\OneDriveSync, la riparazione usa Remove-ItemProperty sulla stessa chiave e rimuove i file temporanei scaricati.",
     bullets: [
       "Ogni danno → una riga di pulizia",
@@ -114,7 +114,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 10 · Sintesi",
     title: "Quiz finale: il metodo nel suo insieme",
-    body: "Dieci domande per fissare l'intero metodo: leggere PowerShell, riconoscere i tre livelli di nascondiglio, usare bene l'AI e scrivere la riparazione. Se sbagli, torna al task corrispondente — non c'è penalità nel riprovare.",
+    body: "Dieci domande per fissare l'intero metodo: leggere PowerShell, riconoscere i tre livelli di nascondiglio, usare bene l'AI e scrivere la riparazione. Le domande ripercorrono i task nell'ordine, quindi se ti blocchi su una sai già dove tornare a rileggere. Se sbagli, non succede nulla: si riprova senza problemi.",
     note: "Consiglio: rispondi prima senza rileggere le slide. Il reverse engineering è esattamente questo ciclo — osserva, decodifica, verifica, ripara — ripetuto ogni volta con un campione diverso.",
     bullets: [
       "1 · Leggi, non eseguire: il reverse parte sempre da qui",
