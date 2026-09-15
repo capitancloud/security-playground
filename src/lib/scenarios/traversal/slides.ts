@@ -17,7 +17,7 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 01 · Osserva",
     title: "Come il server trova un file",
-    body: "Un server ha sempre una cartella di partenza e ci aggiunge il nome che gli mandi: /var/www/html/pages + note.txt → /var/www/html/pages/note.txt. Nel primo esercizio apri due file legittimi e guardi come si compone il percorso finale.",
+    body: "Un server ha sempre una cartella di partenza e ci aggiunge il nome che gli mandi: /var/www/html/pages + note.txt → /var/www/html/pages/note.txt. Nel primo esercizio aprirai due file legittimi e osserverai come si compone il percorso finale.",
     note: "Nessun attacco qui: capire questo meccanismo è essenziale, perché la vulnerabilità nasce esattamente quando l'input può cambiare la parte «cartella» del percorso, non solo il nome del file.",
     bullets: [
       "Esempio tipico: /read?file=note.txt",
