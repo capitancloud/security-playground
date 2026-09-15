@@ -81,7 +81,7 @@ export const traversalScenario: Scenario = {
       brief:
         "Il server oggi filtra i \"..\" letterali. Codifica i caratteri in %2e%2e%2f per farli passare.",
       details:
-        "La prima difesa che uno sviluppatore prova quasi sempre è: «se nella stringa ci sono due punti attaccati, blocco». Funziona per cinque minuti. Il browser (o chiunque componga la richiesta HTTP) può codificare qualunque carattere: %2e è ., %2f è /. Quando la stringa arriva al server, il filtro non vede più «..», ma il decoder che sta dietro sì.\n\nQuesto è un esempio di una regola più generale: non validare mai una stringa nella sua forma di superficie. Prima canonicalizza (decodifica, normalizza, risolvi i simboli speciali), poi decidi se accettarla.",
+        "La prima difesa che uno sviluppatore prova quasi sempre è: «se nella stringa ci sono due punti attaccati, blocco». Funziona in modo molto limitato. Il browser (o chiunque componga la richiesta HTTP) può codificare qualunque carattere: %2e è ., %2f è /. Quando la stringa arriva al server, il filtro non vede più «..», ma il decoder che sta dietro sì.\n\nQuesto è un esempio di una regola più generale: non validare mai una stringa nella sua forma di superficie. Prima canonicalizza (decodifica, normalizza, risolvi i simboli speciali), poi decidi se accettarla.",
       hint: "?file=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd",
       explanation:
         "Filtro e decoder erano in ordine sbagliato: il filtro guardava PRIMA della decodifica, il file system leggeva DOPO. Chi decodifica per ultimo vince.",
