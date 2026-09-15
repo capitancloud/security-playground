@@ -89,7 +89,7 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 07 · Un sistema aggiunge, un altro taglia",
     title: "Il trucco storico del null byte",
-    body: "Immagina un server che dice: «ti servo solo file .txt». Se chiedi il file report, il server aggiunge da solo .txt alla fine e apre report.txt. Come leggere allora un altro file, per esempio passwd? Si chiede passwd\0.txt. Quel \0 si chiama null byte: è un carattere invisibile che nel passato significava «la stringa finisce qui». I vecchi sistemi (PHP 5, ColdFusion, Perl) leggevano il nome solo fino a quel punto: il controllo vedeva «passwd\0.txt» (estensione ok) ma il file aperto era soltanto «passwd».",
+    body: "Immagina un server che dice: «ti servo solo file .txt». Se chiedi il file report, il server aggiunge da solo .txt alla fine e apre report.txt. Come leggere allora un altro file, per esempio passwd? Si chiede passwd%00.txt. Quel %00 (scritto anche \\0) si chiama null byte: è un carattere invisibile che nel passato significava «la stringa finisce qui». I vecchi sistemi (PHP 5, ColdFusion, Perl) leggevano il nome solo fino a quel punto: il controllo vedeva «passwd%00.txt» (estensione ok) ma il file aperto era soltanto «passwd».",
     note: "Oggi i sistemi moderni bloccano il null byte, quindi questo trucco non funziona quasi più. Ma resta il pattern di fondo: due componenti leggono la stessa stringa in modo diverso — uno la taglia, l'altro la legge intera. Ogni volta che due parti non sono d'accordo, nasce una vulnerabilità.",
     bullets: [
       "Difesa del server: «all'input aggiungo io .txt alla fine»",
