@@ -5,7 +5,7 @@ export const idorSlides: Slide[] = [
     kicker: "Scenario 01 · Panoramica",
     title: "Vulnerabilità IDOR",
     body: "In un'app web tutto ha un numero: l'ordine 1042, il profilo 42, il documento 87. L'IDOR nasce quando l'app ti fa cambiare quel numero nella URL e non controlla se quel numero ti appartiene davvero. Così puoi leggere cose di altre persone.",
-    note: "È una delle vulnerabilità più diffuse al mondo, e anche una delle più facili da capire: nessun attacco esotico, solo un numero cambiato nella URL.",
+    note: "È una delle vulnerabilità più diffuse al mondo, e anche una delle più facili da capire: nessun attacco avanzato, solo un numero cambiato nella URL.",
     bullets: ["Nessuno strumento richiesto", "Cambiare un numero basta", "Lo troverai in quasi ogni app web"],
     accent: "gold",
     icon: "ShieldAlert",
