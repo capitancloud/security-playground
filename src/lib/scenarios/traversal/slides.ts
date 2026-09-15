@@ -75,7 +75,7 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 06 · Due sistemi che decodificano",
     title: "Codificare due volte con %25",
-    body: "A volte il filtro non sta da solo: la richiesta passa prima per altri sistemi (proxy, framework, application server), e qualcuno di questi decodifica i caratteri %2e e %2f. Il trucco qui è codificare due volte: ricordati che il simbolo % stesso si scrive %25. Quindi per ottenere . scrivi prima %2e, poi codifichi di nuovo il suo % e ottieni %252e. Al primo giro un sistema converte %25 in %, e la stringa diventa %2e. Al secondo giro il filtro la controlla... ma se il controllo avviene prima dell'ultima decodifica, il punto vero appare solo dopo.",
+    body: "A volte il filtro è da solo: la richiesta passa prima per altri sistemi (proxy, framework, application server), e qualcuno di questi decodifica i caratteri %2e e %2f. Il trucco qui è codificare due volte: ricordati che il simbolo % stesso si scrive %25. Quindi per ottenere . scrivi prima %2e, poi codifichi di nuovo il suo % e ottieni %252e. Al primo giro un sistema converte %25 in %, e la stringa diventa %2e. Al secondo giro il filtro la controlla... ma se il controllo avviene prima dell'ultima decodifica, il punto vero appare solo dopo.",
     note: "Morale: decodifica una volta sola, in un solo posto, e solo dopo controlla il percorso finale. Ogni sistema che decodifica in più è una nuova occasione per sbagliare.",
     bullets: [
       "%25 = % · quindi: . → %2e → %252e",
