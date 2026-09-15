@@ -51,7 +51,7 @@ export const traversalSlides: Slide[] = [
     kicker: "Task 04 · Windows/IIS",
     title: "Uscire dalla cartella anche su Windows",
     body: "Su Windows la logica è identica ma cambiano i dettagli: le cartelle si separano con \\, i percorsi partono da C:\\, e IIS serve i file da C:\\inetpub\\wwwroot. I file di prova diventano win.ini (l'equivalente storico di /etc/passwd) e la mappa di rete in hosts.",
-    note: "L'attacco funziona su qualsiasi sistema operativo: cambia il principio di nulla, cambiano solo file di prova e separatori. È anche il contesto in cui vive lo scenario successivo del modulo Reverse Shell.",
+    note: "L'attacco funziona su qualsiasi sistema operativo: cambia il principio di nulla, cambiano solo file di prova e separatori. È anche il contesto in cui vive lo scenario successivo del modulo Reverse Shell (che vedremo dopo).",
     bullets: [
       "File di prova tipico: C:\\Windows\\win.ini",
       "C:\\Windows\\System32\\drivers\\etc\\hosts",
