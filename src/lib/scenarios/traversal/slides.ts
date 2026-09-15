@@ -115,7 +115,7 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 10 · Sintesi",
     title: "Le tre regole d'oro",
-    body: "Dieci domande finali per fissare i concetti, poi si passa alla pratica. Le domande ripercorrono il modulo: cos'è l'uscita dalla cartella, come si aggirano i filtri, dove si nasconde oltre che negli URL, e le difese davvero efficaci. Se sbagli, torna al task corrispondente — non c'è penalità nel riprovare.",
+    body: "Dieci domande finali per fissare i concetti, poi si passa alla pratica. Le domande ripercorrono il modulo: cos'è l'uscita dalla cartella, come si aggirano i filtri, dove si nasconde oltre che negli URL, e le difese davvero efficaci. Se sbagli, torna al task corrispondente — si può riprovare senza problemi.",
     note: "Consiglio: rispondi prima senza rileggere le slide, poi chiediti: chi decodifica? dove sta il filtro? la password sta in un file o fuori?",
     bullets: [
       "1 · Decodifica e normalizza PRIMA di controllare",
