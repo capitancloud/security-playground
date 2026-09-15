@@ -67,7 +67,7 @@ export const reverseShellSlides: Slide[] = [
   {
     kicker: "Task 05 · Listener",
     title: "Preparare la porta a cui il server si collegherà",
-    body: "Ricordi? Nella reverse shell è il server a chiamare te, non tu a chiamare il server. Quindi prima di tutto ti serve una «orecchia» sul tuo computer: un programma che resta in attesa e aspetta la chiamata. Si chiama listener. Lo strumento standard si chiama netcat, e il comando si lancia così: nc -lvnp 4444. Le quattro lettere significano: l = ascolta (listen), v = mostrami quello che succede (verbose), n = usa solo numeri, niente nomi, p = la porta su cui aspettare, cioè 4444.",
+    body: "Ricordi? Nella reverse shell è il server a chiamare te, non tu a chiamare il server. Quindi prima di tutto ti serve qualcuno che ascolti sul tuo computer: un programma che resta in attesa e aspetta la chiamata. Si chiama listener. Lo strumento standard si chiama netcat, e il comando si lancia così: nc -lvnp 4444. Le quattro lettere significano: l = ascolta (listen), v = mostrami quello che succede (verbose), n = usa solo numeri, niente nomi, p = la porta su cui aspettare, cioè 4444.",
     note: "Sotto la porta 1024 servono privilegi alti, quindi nei CTF si usa spesso 4444 o 9001. Nel mondo reale le porte «più credibili» sono quelle che i firewall lasciano aperte in uscita: 443, 8443, 53.",
     bullets: [
       "Listener = il tuo computer aspetta la chiamata del server",
