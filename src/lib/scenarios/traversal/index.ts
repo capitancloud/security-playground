@@ -68,7 +68,7 @@ export const traversalScenario: Scenario = {
       brief:
         "Su un server Windows i separatori sono \\ e i percorsi partono da C:\\. Leggi C:\\Windows\\win.ini.",
       details:
-        "IIS su Windows serve i file da C:\\inetpub\\wwwroot. La logica è identica: base + input dell'utente. Ma il sistema accetta sia \\ sia / come separatore, e i target «di prova» sono altri: win.ini (equivalente a /etc/passwd come marker storico), boot.ini nei sistemi vecchi, C:\\Windows\\System32\\drivers\\etc\\hosts per vedere la mappa di rete.\n\nQuesto è il contesto in cui vive anche lo scenario successivo del modulo Reverse Shell: un server Windows/IIS che si fida troppo dell'input.",
+        "IIS su Windows serve i file da C:\\inetpub\\wwwroot. La logica è identica: base + input dell'utente. Ma il sistema accetta sia \\ sia / come separatore, e i target «di prova» sono altri: win.ini (equivalente a /etc/passwd come marker storico), boot.ini nei sistemi vecchi, C:\\Windows\\System32\\drivers\\etc\\hosts per vedere la mappa di rete.\n\nQuesto è anche il contesto in cui vive anche lo scenario successivo del modulo Reverse Shell: un server Windows/IIS che si fida troppo dell'input.",
       hint: "?file=../../../Windows/win.ini",
       explanation:
         "Il traversal è indipendente dal sistema operativo: cambiano i file di riferimento e i separatori, non il principio. Anche i drive letter (C:\\, D:\\) sono raggiungibili se il resolver del linguaggio li accetta come assoluti.",
