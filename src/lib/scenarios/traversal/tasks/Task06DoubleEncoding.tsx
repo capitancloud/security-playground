@@ -74,7 +74,7 @@ export default function Task06DoubleEncoding({ markComplete, isComplete }: TaskC
       {isComplete && (
         <SuccessNote>
           Ogni layer che decodifica senza saperlo apre una feritoia. Difesa: decodifica{" "}
-          <strong>una sola volta</strong>, poi normalizza, poi valida — e usa librerie di canonicalizzazione, non regex fai-da-te.
+          <strong>una sola volta</strong>, poi normalizza, poi valida — e usa librerie per rendere il tutto canonico, non regex fai-da-te.
         </SuccessNote>
       )}
     </div>
