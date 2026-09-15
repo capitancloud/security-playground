@@ -29,7 +29,7 @@ export const traversalScenario: Scenario = {
       brief:
         "Il server ha una cartella di base e ci aggiunge il nome che gli passi. Osserva come si compone il percorso finale.",
       details:
-        "Un endpoint tipico è /read?file=note.txt. Il server prende la sua cartella (per esempio /var/www/html/pages) e ci appende «note.txt», ottenendo /var/www/html/pages/note.txt. Poi apre quel file e te ne restituisce il contenuto.\n\nQuesto è un pattern normalissimo, presente in migliaia di applicazioni: pagine dinamiche, download di allegati, viewer di documenti. Non è vulnerabile di per sé — diventa pericoloso quando l'input dell'utente può alterare la parte «cartella» del percorso, non solo la parte «nome file».\n\nApri due file diversi qui sotto per prendere confidenza col meccanismo prima di provare ad attaccare io nostro target",
+        "Un endpoint tipico è /read?file=note.txt. Il server prende la sua cartella (per esempio /var/www/html/pages) e ci appende «note.txt», ottenendo /var/www/html/pages/note.txt. Poi apre quel file e te ne restituisce il contenuto.\n\nQuesto è un pattern normalissimo, presente in migliaia di applicazioni: pagine dinamiche, download di allegati, viewer di documenti. Non è vulnerabile di per sé — diventa pericoloso quando l'input dell'utente può alterare la parte «cartella» del percorso, non solo la parte «nome file».\n\nApri due file diversi qui sotto per prendere confidenza col meccanismo prima di provare ad attaccare il nostro target",
       hint: "Cambia file=note.txt in file=faq.txt, poi in file=press.txt.",
       explanation:
         "Il server compone un percorso concatenando la sua base con il tuo input. Se non controlla che il risultato resti dentro la base, l'input decide dove va a leggere.",
