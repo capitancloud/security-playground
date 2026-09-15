@@ -115,12 +115,12 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 10 · Sintesi",
     title: "Le tre regole d'oro",
-    body: "Dieci domande finali per fissare i concetti, poi si passa alla pratica. Le domande ripercorrono il modulo: cos'è l'uscita dalla cartella, come si aggirano i filtri, dove si nasconde oltre che negli URL, e le difese davvero efficaci. Se sbagli, torna al task corrispondente — si può riprovare senza problemi.",
-    note: "Consiglio: rispondi prima senza rileggere le slide, poi chiediti: chi decodifica? dove sta il filtro? la password sta in un file o fuori?",
+    body: "Ultimo passo prima delle dieci domande finali: un riassunto di tutto il modulo in tre regole. Le domande le ripercorrono una per una — l'uscita dalla cartella con ../, i filtri da aggirare, dove si nasconde l'attacco oltre agli URL, e le difese vere. Se sbagli una risposta, torna al task corrispondente e riprova: non c'è nessuna penalità.",
+    note: "Consiglio: rispondi prima senza rileggere le slide, poi chiediti tre cose. Chi decodifica gli indirizzi? Dove sta il filtro? La password sta in un file o fuori?",
     bullets: [
-      "1 · Decodifica e normalizza PRIMA di controllare",
-      "2 · Chiudi il processo in un spazio protetto: container, permessi minimi",
-      "3 · Mai mandare nomi di file dal client: usa un numero nel database",
+      "Regola 1 — Prima decodifica, poi controlla: il server deve tradurre i codici %2e e %2f nei caratteri veri e solo dopo guardare dove finisce il percorso. Se controlla prima, vede una stringa innocua e apre un file che non dovrebbe",
+      "Regola 2 — Limita i danni: se nonostante tutto un percorso sbagliato arriva al file system, l'app deve girare in un contenitore chiuso, con permessi minimi — così legge solo quello che deve, non tutto il server",
+      "Regola 3 — Nomi di file mai dal client: il browser manda solo un numero (es. file=3) e il server guarda nella sua lista quale file corrisponde — un numero non si può cambiare in ../../etc/passwd",
     ],
     accent: "success",
     icon: "ShieldCheck",
