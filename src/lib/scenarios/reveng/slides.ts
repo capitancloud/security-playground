@@ -81,12 +81,12 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 07 · L'aiuto dell'AI",
     title: "Farsi aiutare dall'AI con le domande giuste",
-    body: "Hai letto lo script con i tuoi occhi: ora proviamo a farsi aiutare dall'AI. L'AI legge il codice in pochi secondi e ti aiuta a non perdere dettagli. Ma attenzione: la risposta che ottieni dipende dalla domanda che fai.\nSe chiedi in modo vago — «questo file è pericoloso?» — ottieni una risposta altrettanto vaga, del tipo «potrebbe essere rischioso», che non ti serve a niente. Se invece dai all'AI le informazioni giuste, la risposta diventa precisa e utile: cosa fa lo script, passo per passo, e come riparare i danni che provoca.",
-    note: "La domanda giusta ha tre ingredienti: che tipo di file è (uno script PowerShell), dove l'hai trovato (la cartella dei file temporanei) e cosa vuoi sapere (comportamento, indicatori, riparazione). Nel task userai proprio questa domanda.",
+    body: "Hai letto lo script con i tuoi occhi: ora proviamo a farsi aiutare dall'AI. L'AI legge il codice in pochi secondi e ti aiuta a non perdere dettagli. Ma attenzione: la risposta che ottieni dipende dalla domanda che fai.\nSe chiedi in modo vago — «questo file è pericoloso?» — ottieni una risposta altrettanto vaga, del tipo «potrebbe essere rischioso», che non ti serve a niente. Se invece dai all'AI le informazioni giuste, la risposta diventa precisa e utile: cosa fa lo script, passo per passo, e come bonificare il sistema che compromette.",
+    note: "La domanda giusta ha tre ingredienti: che tipo di file è (uno script PowerShell), dove l'hai trovato (la cartella dei file temporanei) e cosa vuoi sapere (comportamento, indicatori di compromissione, bonifica). Nel task userai proprio questa domanda.",
     bullets: [
       "Dai il contesto: spiega all'AI che tipo di file è e dove l'hai trovato, così sa da dove partire",
       "Fai domande precise: «spiega cosa fa questo script passo per passo», non «è pericoloso?»",
-      "Chiedi un risultato ordinato: il comportamento passo per passo, gli indicatori di compromissione e lo script che ripara i danni",
+      "Chiedi un risultato ordinato: il comportamento passo per passo, gli indicatori di compromissione e lo script di bonifica",
     ],
     icon: "Bot",
   },
@@ -106,10 +106,10 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 09 · Controcolpo",
     title: "Scrivere lo script che «sistema tutto»",
-    body: "Qui si chiude il cerchio: dal capire al riparare. Se sai esattamente cosa ha fatto il malware, sai anche esattamente cosa riparare.\nNel task scrivi lo script inverso: rimuove la chiave di avvio automatico dal registro, elimina i file scaricati e lascia il sistema pulito come prima. Ogni riga di pulizia corrisponde a un danno che abbiamo visto nei task precedenti — niente di inventato, niente di dimenticato.",
-    note: "Esempio: se il malware ha scritto in HKCU:\\Software\\...\\Run\\OneDriveSync, la riparazione usa Remove-ItemProperty sulla stessa chiave e rimuove i file temporanei scaricati.",
+    body: "Qui si chiude il cerchio: dal capire alla bonifica (in gergo tecnico, remediation). Se sai esattamente cosa ha fatto il malware, sai anche esattamente cosa ripristinare.\nNel task scrivi lo script inverso: rimuove la chiave di avvio automatico dal registro, elimina i file scaricati e lascia il sistema pulito come prima. Ogni riga di bonifica corrisponde a una modifica che abbiamo visto nei task precedenti — niente di inventato, niente di dimenticato.",
+    note: "Esempio: se il malware ha scritto in HKCU:\\Software\\...\\Run\\OneDriveSync, la bonifica usa Remove-ItemProperty sulla stessa chiave e rimuove i file temporanei scaricati.",
     bullets: [
-      "Ogni danno → una riga di pulizia",
+      "Ogni danno → una riga di bonifica",
       "Registro, file temporanei, processo: in quest'ordine",
       "Prova su ambiente isolato, mai sulla macchina reale",
     ],
@@ -119,8 +119,8 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 10 · Sintesi",
     title: "Quiz finale: il metodo nel suo insieme",
-    body: "Dieci domande per fissare l'intero metodo: leggere PowerShell, riconoscere i tre livelli di nascondiglio, usare bene l'AI e scrivere la riparazione. Le domande ripercorrono i task nell'ordine, quindi se ti blocchi su una sai già dove tornare a rileggere. Se sbagli, non succede nulla: si riprova senza problemi.",
-    note: "Consiglio: rispondi prima senza rileggere le slide. Il reverse engineering è esattamente questo ciclo — osserva, decodifica, verifica, ripara — ripetuto ogni volta con un campione diverso.",
+    body: "Dieci domande per fissare l'intero metodo: leggere PowerShell, riconoscere i tre livelli di nascondiglio, usare bene l'AI e scrivere lo script di bonifica. Le domande ripercorrono i task nell'ordine, quindi se ti blocchi su una sai già dove tornare a rileggere. Se sbagli, non succede nulla: si riprova senza problemi.",
+    note: "Consiglio: rispondi prima senza rileggere le slide. Il reverse engineering è esattamente questo ciclo — osserva, decodifica, verifica, bonifica — ripetuto ogni volta con un campione diverso.",
     bullets: [
       "1 · Leggi, non eseguire: il reverse parte sempre da qui",
       "2 · Nascondersi è un trucco prevedibile, e si può sempre annullare",
