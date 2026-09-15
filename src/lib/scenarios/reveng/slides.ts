@@ -81,12 +81,12 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 07 · L'aiuto dell'AI",
     title: "Farsi aiutare dall'AI con le domande giuste",
-    body: "Ora che conosci lo script, proviamo a farci aiutare dall'AI. L'AI legge il codice molto in fretta, ma la qualità della risposta dipende tutta dalla domanda che gli fai.\nUna domanda vaga («questo file è pericoloso?») porta a una risposta vaga. Una domanda precisa porta a un'analisi precisa: gli dici che tipo di file è, dove l'hai trovato, e cosa vuoi sapere — il comportamento passo per passo, gli indicatori di compromissione, e lo script che annulla i danni.",
-    note: "Regola d'oro: non chiedere «dimmi se questo è pericoloso» — chiedi «spiega passo per passo cosa fa questo script, elenca gli indicatori di compromissione e scrivi lo script che annulla i suoi effetti».",
+    body: "Hai letto lo script con i tuoi occhi: ora proviamo a farsi aiutare dall'AI. L'AI legge il codice in pochi secondi e ti aiuta a non perdere dettagli. Ma attenzione: la risposta che ottieni dipende dalla domanda che fai.\nSe chiedi in modo vago — «questo file è pericoloso?» — ottieni una risposta altrettanto vaga, del tipo «potrebbe essere rischioso», che non ti serve a niente. Se invece dai all'AI le informazioni giuste, la risposta diventa precisa e utile: cosa fa lo script, passo per passo, e come riparare i danni che provoca.",
+    note: "La domanda giusta ha tre ingredienti: che tipo di file è (uno script PowerShell), dove l'hai trovato (la cartella dei file temporanei) e cosa vuoi sapere (comportamento, indicatori, riparazione). Nel task userai proprio questa domanda.",
     bullets: [
-      "Contesto: tipo di file, dove l'hai trovato",
-      "Domande precise, risposta precisa",
-      "Chiedi output strutturato: comportamento, indicatori, riparazione",
+      "Dai il contesto: spiega all'AI che tipo di file è e dove l'hai trovato, così sa da dove partire",
+      "Fai domande precise: «spiega cosa fa questo script passo per passo», non «è pericoloso?»",
+      "Chiedi un risultato ordinato: il comportamento passo per passo, gli indicatori di compromissione e lo script che ripara i danni",
     ],
     icon: "Bot",
   },
