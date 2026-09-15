@@ -75,7 +75,7 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 06 · Due sistemi che decodificano",
     title: "Codificare due volte con %25",
-    body: "A volte il filtro è da solo: la richiesta passa prima per altri sistemi (proxy, framework, application server), e qualcuno di questi decodifica i caratteri %2e e %2f. Il trucco qui è codificare due volte: ricordati che il simbolo % stesso si scrive %25. Quindi per ottenere . scrivi prima %2e, poi codifichi di nuovo il suo % e ottieni %252e. Al primo giro un sistema converte %25 in %, e la stringa diventa %2e. Al secondo giro il filtro la controlla... ma se il controllo avviene prima dell'ultima decodifica, il punto vero appare solo dopo.",
+    body: "A volte il filtro non sta da solo: la richiesta passa prima per altri sistemi (proxy, framework, application server), e qualcuno di questi decodifica i caratteri %2e e %2f. Il trucco qui è codificare due volte: ricordati che il simbolo % stesso si scrive %25. Quindi per ottenere . scrivi prima %2e, poi codifichi di nuovo il suo % e ottieni %252e. Al primo giro un sistema converte %25 in %, e la stringa diventa %2e. Al secondo giro il filtro la controlla... ma se il controllo avviene prima dell'ultima decodifica, il punto vero appare solo dopo.",
     note: "Morale: decodifica una volta sola, in un solo posto, e solo dopo controlla il percorso finale. Ogni sistema che decodifica in più è una nuova occasione per sbagliare.",
     bullets: [
       "%25 = % · quindi: . → %2e → %252e",
@@ -89,8 +89,14 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 07 · Un sistema aggiunge, un altro taglia",
     title: "Il trucco storico del null byte",
-    body: "Un'altra difesa comune: «servo solo file .txt, se non finisce con .txt lo aggiungo io». Nei sistemi del passato (PHP 5, ColdFusion, Perl) la parte che apre i file trattava \\0 come fine stringa: il server vedeva «passwd\\0.txt» e apriva in realtà «passwd».",
-    note: "I sistemi moderni bloccano i null byte, quindi questo trucco specifico non funziona più quasi mai. Ma il pattern — due parti che leggono la stessa stringa in modo diverso — si ripresenta continuamente in forme nuove.",
+    body: "Immagina un server che dice: «ti servo solo file .txt». Se chiedi il file report, il server aggiunge da solo .txt alla fine e apre report.txt. Come leggere allora un altro file, per esempio passwd? Si chiede passwd\0.txt. Quel \0 si chiama null byte: è un carattere invisibile che nel passato significava «la stringa finisce qui». I vecchi sistemi (PHP 5, ColdFusion, Perl) leggevano il nome solo fino a quel punto: il controllo vedeva «passwd\0.txt» (estensione ok) ma il file aperto era soltanto «passwd».",
+    note: "Oggi i sistemi moderni bloccano il null byte, quindi questo trucco non funziona quasi più. Ma resta il pattern di fondo: due componenti leggono la stessa stringa in modo diverso — uno la taglia, l'altro la legge intera. Ogni volta che due parti non sono d'accordo, nasce una vulnerabilità.",
+    bullets: [
+      "Difesa del server: «all'input aggiungo io .txt alla fine»",
+      "Trucco: passwd\0.txt — il null byte taglia via il .txt",
+      "Il controllo vede .txt, il file aperto è passwd",
+      "Oggi bloccato, ma il pattern «due letture diverse» torna sempre",
+    ],
     icon: "Scissors",
   },
   {
