@@ -42,7 +42,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 03 · Primo nascondiglio",
     title: "Decodificare Base64",
-    body: "Il primo nascondiglio si chiama -EncodedCommand. Invece di scrivere il comando in chiaro, l'attaccante lo trasforma in una fila di lettere senza senso: quella codifica si chiama Base64.\nQui viene il bello: Base64 non è un segreto. Non è crittografia, è solo un modo diverso di scrivere la stessa cosa — come scrivere una parola al contrario. Chiunque può tornare indietro, e nel task lo facciamo davvero: decodifichiamo la stringa nel browser e leggiamo il comando che c'era dietro.",
+    body: "Il primo tentativo di camuffamento si chiama -EncodedCommand. Invece di scrivere il comando in chiaro, l'attaccante lo trasforma in una fila di lettere senza senso: quella codifica si chiama Base64. Qui viene il bello: Base64 non è un segreto. Non è crittografia, è solo un modo diverso di scrivere la stessa cosa — come scrivere una parola al contrario. Chiunque può tornare indietro, e nel task lo facciamo davvero: decodifichiamo la stringa nel browser e leggiamo il comando che c'era dietro.",
     note: "Esempio del flusso: PowerShell -EncodedCommand <base64> → decodifica → il comando reale, chiaro e leggibile. Attenzione a un dettaglio: la stringa è in formato UTF-16LE, cioè due byte per ogni carattere — il task se ne occupa per te.",
     bullets: [
       "Base64 = maschera, non segreto: si decodifica sempre",
