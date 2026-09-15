@@ -105,9 +105,9 @@ export const traversalSlides: Slide[] = [
     body: "Leggere /etc/passwd è solo un esercizio: lì dentro non ci sono password utilizzabili. Il vero bottino sono altri file: app.conf, .env, database.yml, web.config. Quelli sì che contengono spesso utente e password del database scritti in chiaro, più chiavi API e token cloud. Attenzione a un dettaglio: l'attacco non passa solo dalla URL. Anche un messaggio API con un campo chiamato filename arriva sul server e finisce, se non controllato, in un'apertura di file.",
     note: "Con utente e password del database in mano, l'attaccante entra direttamente nel database, senza passare dall'applicazione: salta ogni controllo. Le difese sono due. Primo: non mandare mai il nome del file dal browser — manda un numero, e il server cerca da solo il percorso vero. Secondo: tieni le password fuori dai file, in variabili d'ambiente o in un gestore di segreti.",
     bullets: [
-      "app.conf, .env, database.yml: spesso contengono la password del database in chiaro",
-      "Il campo filename di un messaggio API vale quanto la URL: è input e si può cambiare",
-      "Se il browser manda solo un numero e le password non stanno nei file, il difetto sparisce",
+      "I file di configurazione (app.conf, .env, database.yml) contengono spesso la password del database scritta così com'è, senza protezioni",
+      "Non solo la URL: se una richiesta API contiene un campo filename, anche quel campo è controllato da te e puoi scriverci ../",
+      "Difesa: il browser manda solo un numero (es. file=3) e il server traduce da solo il numero nel percorso vero — così nessuno può cambiarlo",
     ],
     accent: "danger",
     icon: "Vault",
