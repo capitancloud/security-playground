@@ -62,11 +62,12 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 05 · Primo bypass",
     title: "Codificare i caratteri: %2e%2e%2f",
-    body: "La difesa ingenua è: «se nella stringa ci sono due punti attaccati, blocco». Funziona per cinque minuti: chi manda la richiesta può «camuffare» i caratteri — %2e è ., %2f è /. Il filtro non riconosce più i due punti, ma il sistema che apre i file sì.",
+    body: "Alcuni server si difendono così: «se nel nome del file c'è ../, blocco la richiesta». Sembra furbo, ma c'è un problema: nella URL i caratteri si possono scrivere in forma codificata. Il punto . diventa %2e e la barra / diventa %2f. Quindi ../ si può scrivere come %2e%2e%2f: per il filtro è una stringa innocua, ma quando il server la decodifica e apre il file, torna ad essere ../.",
+    note: "Il filtro controlla la stringa prima di decodificarla, il sistema operativo la legge dopo. Regola generale: prima decodifica, poi controlla.",
     bullets: [
-      "%2e = . · %2f = /",
-      "Il filtro guardava troppo presto, il file system leggeva dopo",
-      "Regola generale: decodifica e normalizza PRIMA di controllare",
+      "%2e = . e %2f = / → ../ diventa %2e%2e%2f",
+      "Il filtro vede una stringa innocua, il file system riceve ../",
+      "Difesa corretta: decodifica e normalizza PRIMA di controllare",
     ],
     accent: "danger",
     icon: "Repeat",
