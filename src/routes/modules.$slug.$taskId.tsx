@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getScenario } from "@/lib/scenarios";
 import { useProgress } from "@/hooks/useProgress";
 import { cn } from "@/lib/utils";
+import { RichText } from "@/components/lab/RichText";
 
 export const Route = createFileRoute("/modules/$slug/$taskId")({
   component: TaskPage,
@@ -45,11 +46,7 @@ function TaskPage() {
           <p className="text-base leading-relaxed text-ivory/90">{task.brief}</p>
 
           {task.details && (
-            <div className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
-              {task.details.split("\n\n").map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
+            <RichText text={task.details} className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground" />
           )}
 
           <div className="mt-6 flex items-start gap-3 rounded-lg border border-gold/30 bg-gold/5 p-4">
