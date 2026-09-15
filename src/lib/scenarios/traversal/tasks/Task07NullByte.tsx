@@ -45,22 +45,26 @@ export default function Task07NullByte({ markComplete, isComplete }: TaskContext
 
       {!isComplete && (
         <InfoNote>
-          Il server ora appende <code className="text-gold">.txt</code> se il file richiesto non
-          termina già così: pensa di essere al sicuro. Ma la libreria che legge il file è scritta in
-          C e tronca al primo <em>null byte</em> (<code className="text-gold">%00</code>). Prova{" "}
-          <code className="text-gold">?file=../../../../etc/passwd%00</code>.
+          Il server aggiunge <code className="text-gold">.txt</code> ai file che non finiscono
+          già così. Ma il carattere <code className="text-gold">%00</code> (null byte) dice
+          «qui finisce il testo»: tutto ciò che viene dopo viene ignorato, incluso il .txt.
+          Prova <code className="text-gold">?file=../../../../etc/passwd%00</code>.
         </InfoNote>
       )}
 
       {missingNullByte && !file && (
-        <WarnNote>Il server ha appeso <code>.txt</code>: aggiungi <code>%00</code> per fargli ignorare il resto.</WarnNote>
+        <WarnNote>
+          Il server ha aggiunto <code>.txt</code> e il file non esiste. Aggiungi{" "}
+          <code>%00</code> alla fine dell'indirizzo: il null byte taglia il testo in quel
+          punto e il server dimentica il .txt.
+        </WarnNote>
       )}
 
       {isComplete && (
         <SuccessNote>
-          Il null byte era il classico bypass della whitelist di estensioni nei tempi di PHP 5.
-          Chiuso da anni nei linguaggi moderni, ma l'idea sopravvive ogni volta che due layer
-          interpretano diversamente la stessa stringa.
+          Perfetto: il null byte ha tagliato il .txt e il server ha letto /etc/passwd.
+          Nei linguaggi moderni questo trucco è bloccato, ma la lezione vale ancora:
+          quando due componenti leggono la stessa stringa in modi diversi, nasce una falla.
         </SuccessNote>
       )}
     </div>
