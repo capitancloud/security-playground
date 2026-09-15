@@ -54,7 +54,7 @@ const QUESTIONS = [
     q: "Qual è la difesa più solida contro il path traversal?",
     options: [
       "Bloccare i .. con una regex",
-      "Canonicalizzare il percorso e verificare che resti dentro la cartella permessa",
+      "Rendere canonico il percorso e verificare che resti dentro la cartella permessa",
       "Rinominare il file",
       "Rimuovere l'estensione",
     ],
