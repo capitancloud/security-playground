@@ -55,7 +55,7 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 04-05 · Secondo nascondiglio",
     title: "Codice smontato e rimontato",
-    body: "Il malware non si ferma a Base64: smonta le stringhe in pezzi e le rimonta all'ultimo momento, quando il programma gira. Chi legge il codice trova solo pezzi sparsi; il computer, invece, li ricompone da solo.\nSono due varianti dello stesso trucco. Nel task 4 troviamo un comando Invoke-Expression (che significa «esegui quello che leggi») nascosto nella concatenazione di stringhe spezzate. Nel task 5 decodifichiamo un array di numeri: ogni numero è il codice di una lettera, quindi 72 diventa H e 73 diventa I.",
+    body: "Nel task precedente l'attaccante nascondeva il comando dentro una stringa Base64. Qui va oltre: spezza il testo in tanti pezzi sparsi che, presi singolarmente, sembrano senza senso. Il codice che leggi non ti dice nulla; il computer però, quando il programma parte, incolla i pezzi nell'ordine giusto ed esegue il comando ricostruito.\nQuesto trucco ha due varianti, e le vediamo entrambe. Nel task 4 troviamo un comando Invoke-Expression — che significa «esegui quello che leggi» — nascosto dentro parole spezzate e ricomposte con il segno +. Nel task 5 troviamo una lista di numeri: ogni numero è il codice di una lettera, quindi 72 diventa H e 73 diventa I.",
     note: "Esempio: [char[]](72,73) → 'HI'. Il computer conosce la tavola dei caratteri e riconstruisce il messaggio. Tu fai la stessa cosa al contrario: parti dai numeri e risali alle lettere.",
     bullets: [
       "Concatenazione: stringhe spezzate e ricomposte al volo",
