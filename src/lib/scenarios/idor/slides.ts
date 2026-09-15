@@ -93,7 +93,7 @@ export const idorSlides: Slide[] = [
     kicker: "Task 10 · Sintesi",
     title: "Le tre regole d'oro",
     body: "Dieci domande finali per fissare i concetti, poi si passa alla pratica. Se rispondi a tutte, hai capito l'IDOR: ricapitola con le tre regole che vorresti vedere in ogni app che usi.",
-    note: "Consiglio: rispondi prima senza rileggere le slide. Le domande non sono difficili, servono solo a capire se i concetti sono entrati.",
+    note: "Consiglio: rispondi prima senza rileggere le slide. Le domande non sono difficili, servono solo a capire se i concetti sono assimilati.",
     bullets: [
       "1 · Controlli sempre lato server, a ogni richiesta",
       "2 · Numeri non facili da indovinare (UUID casuali, chiavi opache)",
