@@ -58,7 +58,7 @@ export const idorSlides: Slide[] = [
     bullets: [
       "/download?doc=87 → cambia il numero e scarichi il documento di un altro",
       "I campi nascosti si vedono con DevTools",
-      "«Mai fidarsi del client»: il client è sempre in mano a un attaccante",
+      "«Mai fidarsi del client»: il client è sempre gestito dall'attaccante",
     ],
     icon: "Boxes",
   },
