@@ -119,12 +119,12 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 10 · Sintesi",
     title: "Quiz finale: il metodo nel suo insieme",
-    body: "Dieci domande per fissare l'intero metodo: leggere PowerShell, riconoscere i tre livelli di nascondiglio, usare bene l'AI e scrivere lo script di bonifica. Le domande ripercorrono i task nell'ordine, quindi se ti blocchi su una sai già dove tornare a rileggere. Se sbagli, non succede nulla: si riprova senza problemi.",
-    note: "Consiglio: rispondi prima senza rileggere le slide. Il reverse engineering è esattamente questo ciclo — osserva, decodifica, verifica, bonifica — ripetuto ogni volta con un campione diverso.",
+    body: "Ultima tappa: un quiz di dieci domande che ripassa tutto quello che hai fatto. Le domande seguono lo stesso ordine dei task: prima leggere lo script, poi i tre livelli di nascondiglio, poi l'AI e infine la bonifica. Così, se una domanda ti blocca, sai già a quale task tornare per rileggere. E se sbagli una risposta, non succede nulla: puoi riprovarla quante volte vuoi.",
+    note: "Consiglio: prova a rispondere senza rileggere le slide. Se una risposta non ti torna, è il segnale giusto per tornare al task e fissare meglio quel concetto.",
     bullets: [
-      "1 · Leggi, non eseguire: il reverse parte sempre da qui",
-      "2 · Nascondersi è un trucco prevedibile, e si può sempre annullare",
-      "3 · L'AI accelera, ma la verifica resta tuo compito",
+      "1 · Prima regola: leggi il codice, non eseguirlo mai",
+      "2 · Ogni trucco per nascondersi si può annullare e tornare al testo originale",
+      "3 · L'AI ti fa risparmiare tempo, ma sei tu a controllare che abbia ragione",
     ],
     accent: "success",
     icon: "ShieldCheck",
