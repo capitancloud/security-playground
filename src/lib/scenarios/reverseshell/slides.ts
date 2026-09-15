@@ -41,7 +41,7 @@ export const reverseShellSlides: Slide[] = [
   {
     kicker: "Task 03 · Anatomia",
     title: "Com'è fatta una webshell ASPX",
-    body: "Una webshell è una pagina che riceve un comando, lo passa a Windows e mostra il risultato. È il «telecomando» dell'attaccante. In questo task ne leggiamo una semplicissima, fatta in poche righe, per capire come funziona.",
+    body: "Una webshell è una pagina web con un semplice trucco dentro: riceve un comando scritto nella URL, lo fa eseguire da Windows e ti mostra il risultato nella pagina. È come un telecomando del server. In questo task ne leggiamo una minimalista, di poche righe, per capire come funziona.",
     note: "Il punto chiave: se IIS vede un file .aspx, lo esegue. Basta una pagina con la direttiva <%@ Page Language=\"C#\" %> perché il telecomando funzioni. Ecco perché le poche righe bastano.",
     bullets: [
       "Riceve il comando: arriva nella URL, dopo ?cmd (es. ?cmd=whoami)",
