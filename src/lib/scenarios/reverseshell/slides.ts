@@ -29,7 +29,7 @@ export const reverseShellSlides: Slide[] = [
   {
     kicker: "Task 02 · Mappa del sito",
     title: "Trovare dove si carica un file",
-    body: "Un sito diventa pericoloso quando tre cose vanno insieme: un punto dove puoi caricare un file, una cartella dove quel file si apre con un indirizzo web, e il fatto che in quella cartella i file si eseguono. Nel task navighiamo il sito e proviamo gli indirizzi /upload e /uploads/ per trovarli.",
+    body: "Un sito diventa pericoloso quando tre elementi sono presenti: un punto dove puoi caricare un file, una cartella dove quel file si apre con un indirizzo web, e il fatto che in quella cartella i file si eseguono. Nel task navighiamo il sito e proviamo gli indirizzi /upload e /uploads/ per trovarli.",
     note: "Il triangolo da rompere: carica · serve · esegue. Basta chiudere uno dei tre lati per fermare tutto. Se /upload accetta file e /uploads/ li mostra a tutti, il cerchio è chiuso.",
     bullets: [
       "Tre lati del triangolo: carica · serve · esegue",
