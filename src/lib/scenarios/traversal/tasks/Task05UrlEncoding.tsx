@@ -43,7 +43,7 @@ export default function Task05UrlEncoding({ markComplete, isComplete }: TaskCont
           Il server oggi ha imparato a bloccare i <code className="text-gold">..</code> letterali.
           Ma i browser (e i client HTTP) applicano URL-encoding: <code>.</code> = %2e,{" "}
           <code>/</code> = %2f. Sostituisci i caratteri e prova{" "}
-          <code className="text-gold">?file=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd</code>.
+          <code className="break-all text-gold">?file=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd</code>.
         </InfoNote>
       )}
 
