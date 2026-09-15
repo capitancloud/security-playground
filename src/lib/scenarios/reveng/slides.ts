@@ -5,7 +5,7 @@ export const revengSlides: Slide[] = [
     kicker: "Scenario 04 · Panoramica",
     title: "Reverse Engineering (base)",
     body: "Il reverse engineering significa capire cosa fa un programma leggendolo, senza mai eseguirlo. È quello che fa un meccanico quando smonta un motore per vedere com'è fatto dentro.\nIn questo scenario trovi sul computer di un utente un file chiamato update.ps1. Sembra un aggiornamento innocuo, ma non lo è. Lo smontiamo pezzo per pezzo: prima lo leggiamo, poi scopriamo cosa nasconde, infine scriviamo lo script che cancella i suoi effetti.",
-    note: "Non è magia nera: è metodo. I programmi malevoli fatti in fretta usano sempre gli stessi pochi trucchi per nascondersi. In questo modulo li vedremo tutti, uno alla volta.",
+    note: "Niente di strano o particolare: è metodo. I programmi malevoli fatti in fretta usano sempre gli stessi pochi trucchi per nascondersi. In questo modulo li vedremo tutti, uno alla volta.",
     bullets: [
       "Leggere un codice è il primo passo per difendersi",
       "Tre livelli di nascondiglio, ognuno più tosto del precedente",
