@@ -68,12 +68,12 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 06 · Terzo nascondiglio",
     title: "XOR: ogni lettera mescolata con un numero segreto",
-    body: "Terzo e ultimo livello: XOR. È un'operazione matematica semplicissima che «mescola» ogni lettera del messaggio con un numero segreto, chiamato chiave. Il risultato sembra rumore casuale.\nMa XOR ha una proprietà che lo rende debole: è reversibile. Se applichi di nuovo la stessa chiave al testo mescolato, torna tutto in chiaro — la mescolanza si annulla. E siccome qui la chiave è un solo numero (da 1 a 255), le possibilità sono finite: basta provarle tutte. Nel task lo fai muovendo uno slider e guardando il testo apparire.",
-    note: "XOR con una chiave singola è indecifrabile in teoria ma debole in pratica: prova tutti i 256 numeri possibili e uno è quello giusto — esattamente quello che farai con lo slider.",
+    body: "Terzo e ultimo livello: XOR. Immagina di prendere ogni lettera del messaggio e di «mescolarla» con un numero segreto, che si chiama chiave. Il risultato è una fila di simboli senza senso, che sembra rumore casuale.\nPerché è debole? Perché la mescolanza si può annullare: se applichi di nuovo la stessa chiave al testo mescolato, il messaggio torna in chiaro, esattamente com'era prima. E in questo caso la chiave è un solo numero, che va da 1 a 255: le possibilità sono poche, quindi si possono provare tutte, una alla volta, finché non appare il testo leggibile.\nNel task lo farai con le tue mani: muovi uno slider e guardi il testo apparire appena arrivi al numero giusto.",
+    note: "La regola da ricordare: un testo nascosto con XOR non va indovinato, va provato. Con una chiave di un solo numero hai al massimo 255 tentativi — e lo slider li fa provare tutti in pochi secondi.",
     bullets: [
-      "XOR è reversibile: stesso numero per nascondere e mostrare",
-      "Chiave a 1 numero = 256 possibilità, tutte provabili",
-      "Lo slider ti fa vedere la chiave giusta in tempo reale",
+      "Nascondere e mostrare usano la stessa chiave: la stessa operazione che mescola il testo è quella che lo riporta in chiaro",
+      "La chiave è un solo numero da 1 a 255: al massimo 255 tentativi per trovare quello giusto",
+      "Lo slider prova i numeri uno alla volta: quando arrivi alla chiave corretta, il messaggio compare all'improvviso",
     ],
     accent: "danger",
     icon: "KeyRound",
