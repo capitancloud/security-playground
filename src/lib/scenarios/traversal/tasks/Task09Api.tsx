@@ -69,20 +69,23 @@ export default function Task09Api({ markComplete, isComplete }: TaskContext) {
 
       {!isComplete && (
         <InfoNote>
-          Un endpoint API riceve il nome del file in un body JSON e lo cerca nella tua cartella{" "}
-          <span className="font-mono">{BASE}</span>. Cambia il campo{" "}
-          <code className="text-gold">filename</code> per uscire dalla tua cartella e leggere la
-          chiave SSH privata dell'utente <code>acme</code>:{" "}
-          <code className="text-gold">"../../../../../home/acme/.ssh/id_rsa"</code>.
+          Il file che chiedi viene cercato nella tua cartella{" "}
+          <span className="font-mono">{BASE}</span>. Il server prende quella cartella e ci attacca
+          il <code className="text-gold">filename</code> che hai scritto nel JSON, senza
+          controllare dove finisce il percorso. Quindi: scrivi <code className="text-gold">../</code>{" "}
+          abbastanza volte per tornare alla radice, poi il percorso della chiave SSH di{" "}
+          <code>acme</code>:{" "}
+          <code className="text-gold break-all">"../../../../../home/acme/.ssh/id_rsa"</code>.
         </InfoNote>
       )}
 
       {isComplete && (
         <SuccessNote>
-          Path traversal non vive solo negli URL: qualunque input che finisce dentro una chiamata
-          filesystem è a rischio. Con una chiave SSH privata l'attaccante entra sul server via SSH
-          come quell'utente. Difesa: lavora con identificatori opachi (ID del file nel DB), non con
-          nomi/percorsi controllati dall'utente.
+          Ce l'hai fatta: anche una richiesta API senza URL modificato permette di leggere file
+          fuori dalla tua cartella. Con una chiave SSH privata un attaccante entra nel server come
+          quell'utente. La difesa migliore: il client non manda nomi di file, manda solo un numero
+          (l'id del file nel database) — il percorso vero lo calcola il server, e l'utente non può
+          cambiarlo.
         </SuccessNote>
       )}
     </div>
