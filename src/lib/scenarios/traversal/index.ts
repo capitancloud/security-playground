@@ -105,12 +105,12 @@ export const traversalScenario: Scenario = {
       title: "Bypass della whitelist di estensioni",
       goal: "Il trucco storico del null byte",
       brief:
-        "Il server appende .txt al nome del file. Usa il null byte %00 per fargli ignorare quello che segue.",
+        "Il server aggiunge .txt ai nomi dei file. Usa il carattere speciale %00 per fargli ignorare quello che viene dopo.",
       details:
-        "Una difesa comune è: «servo solo file .txt, se non finisce con .txt lo aggiungo io». Sembra ragionevole, ma in molti runtime del passato (PHP 5, ColdFusion, Perl) le API del file system erano scritte in C e trattavano \\0 come fine stringa. Risultato: il server vedeva «passwd\\0.txt» e passava alla lettura una stringa che veniva troncata a «passwd».\n\nLe versioni moderne di PHP, Python, Java, Node bloccano i null byte nelle chiamate filesystem, quindi il trucco specifico non funziona più quasi mai. Ma il pattern — un layer aggiunge, un altro tronca — si ripresenta continuamente in forme nuove (query string parsing diverso tra proxy e app, encoding Unicode ambigui, path separator diversi tra librerie).",
+        "Il server dice: «ti faccio leggere solo file .txt. Se il nome non finisce con .txt, lo aggiungo io». Sembra una difesa solida.\n\nC'è però un trucco storico. Nelle vecchie versioni di PHP 5, Perl e ColdFusion, la parte del programma che apre i file era scritta in linguaggio C. In C esiste un carattere speciale, il null byte (si scrive \\0), che significa «qui finisce il testo»: tutto ciò che viene dopo viene ignorato.\n\nSegui la richiesta passo passo:\n\n1. Tu scrivi: ?file=../../../etc/passwd%00\n2. Il server controlla: la stringa finisce con .txt, quindi la lascia passare.\n3. Il server aggiunge .txt: il nome diventa passwd%00.txt.\n4. Quando il file viene aperto, il null byte (%00) dice «qui finisce il testo»: il nome diventa solo passwd.\n5. Il server legge /etc/passwd, senza .txt.\n\nAttenzione: nei linguaggi moderni (PHP 7+, Python, Java, Node) questo trucco non funziona più, perché bloccano il null byte a monte. Ma la lezione resta valida: quando due componenti interpretano la stessa stringa in modo diverso, si apre una falla. E questo capita ancora oggi.",
       hint: "?file=../../../../etc/passwd%00",
       explanation:
-        "Due layer che interpretano la stessa stringa in modo diverso = una feritoia. Il null byte è il caso storico; la lezione è generale.",
+        "Il null byte è il carattere che dice «qui finisce il testo». La difesa vera non è aggiungere l'estensione e sperare: è controllare il percorso finale, dopo tutte le elaborazioni che subisce la stringa.",
       Simulation: Task07NullByte,
     },
     {
