@@ -79,12 +79,12 @@ export const reverseShellSlides: Slide[] = [
   {
     kicker: "Task 06 · Payload",
     title: "Costruire shell.aspx con LHOST e LPORT",
-    body: "Ora componiamo il payload: una pagina .aspx che quando IIS la esegue avvia PowerShell e apre la connessione verso il tuo computer. Servono solo due cose: LHOST, cioè l'indirizzo del tuo computer, e LPORT, cioè la porta 4444 su cui stai ascoltando.",
-    note: "La regola: LPORT deve coincidere esattamente con la porta del listener. Sbagliare LHOST o LPORT significa nessuna connessione, nessuna shell — ed è esattamente il tipo di errore che vedrai fare nel task se sbagli.",
+    body: "Adesso costruiamo il payload: è il file che fa partire la reverse shell. In pratica è una pagina .aspx che contiene un comando PowerShell dentro. Quando IIS la esegue, quel comando parte e fa una cosa precisa: chiama il tuo computer sulla porta 4444, dove il tuo listener sta aspettando. Per funzionare gli servono solo due informazioni. LHOST: l'indirizzo del tuo computer (quello attaccato alla stessa rete del server, per esempio 10.10.14.5). LPORT: la porta su cui il tuo listener aspetta, cioè la 4444 che hai aperto nel task precedente.",
+    note: "Regola d'oro: LPORT deve essere identico alla porta del listener. Se scrivi 4444 nel listener ma 5555 nel payload, il server chiama una porta dove nessuno ascolta: la chiamata cade nel vuoto e non arriva nessuna shell. Nel task vedrai esattamente questo errore, così impari a riconoscerlo.",
     bullets: [
-      "LHOST = indirizzo del tuo computer · LPORT = porta del listener",
-      "Pagina .aspx + one-liner PowerShell = payload completo",
-      "Sbagliare uno dei due parametri = nessuna shell",
+      "Payload = pagina .aspx con dentro un comando PowerShell",
+      "LHOST = l'indirizzo del tuo computer · LPORT = la porta del listener (4444)",
+      "Se LHOST o LPORT sono sbagliati, il server chiama nel vuoto: nessuna shell",
     ],
     accent: "danger",
     icon: "Socket",
