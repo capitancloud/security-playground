@@ -104,7 +104,7 @@ export default function Task07AiAnalysis({ markComplete, isComplete }: TaskConte
           <div className="mb-2 flex items-center gap-2 text-[10px] uppercase tracking-widest text-gold-soft">
             <Sparkles className="h-3 w-3" /> Risposta AI
           </div>
-          <pre className="whitespace-pre-wrap font-mono text-[12px] leading-relaxed text-ivory/90">
+          <pre className="whitespace-pre-wrap break-words break-all font-mono text-[12px] leading-relaxed text-ivory/90">
             {chosen.answer.slice(0, typed)}
             {typed < chosen.answer.length && (
               <span className="ml-0.5 inline-block h-3 w-1.5 translate-y-0.5 animate-pulse bg-gold" />

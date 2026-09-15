@@ -102,7 +102,7 @@ export default function Task03Base64({ markComplete, isComplete }: TaskContext) 
         <summary className="cursor-pointer hover:text-ivory">
           Suggerimento: cosa ti aspetti di vedere?
         </summary>
-        <pre className="mt-2 whitespace-pre-wrap rounded bg-black/40 p-2 font-mono text-[10px] text-muted-foreground/80">
+        <pre className="mt-2 whitespace-pre-wrap break-all rounded bg-black/40 p-2 font-mono text-[10px] text-muted-foreground/80">
           {DECODED_PAYLOAD.slice(0, 90)}…
         </pre>
       </details>
