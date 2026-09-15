@@ -40,22 +40,27 @@ export default function Task05UrlEncoding({ markComplete, isComplete }: TaskCont
 
       {!isComplete && (
         <InfoNote>
-          Il server oggi ha imparato a bloccare i <code className="text-gold">..</code> letterali.
-          Ma i browser (e i client HTTP) applicano URL-encoding: <code>.</code> = %2e,{" "}
-          <code>/</code> = %2f. Sostituisci i caratteri e prova{" "}
+          Il filtro controlla se nella stringa c'è <code className="text-gold">..</code>: se lo
+          trova, blocca. Ma tu non devi scrivere i due punti direttamente: ogni carattere di un
+          URL si può scrivere in forma codificata. Il punto <code>.</code> si scrive %2e e lo
+          slash <code>/</code> si scrive %2f. Quindi <code>../</code> diventa{" "}
+          <code className="break-all text-gold">%2e%2e%2f</code>. Il filtro guarda la stringa
+          codificata, non vede «..» e lascia passare; poi il server decodifica e i due punti
+          riappariscono. Prova con{" "}
           <code className="break-all text-gold">?file=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd</code>.
         </InfoNote>
       )}
 
       {blockedByFilter && (
-        <WarnNote>Il filtro ha rimosso i "..". Devi nasconderli con l'URL-encoding.</WarnNote>
+        <WarnNote>Il filtro ha visto i ".." in chiaro. Nascondili scrivendoli in forma codificata.</WarnNote>
       )}
 
       {isComplete && (
         <SuccessNote>
-          Il filtro guardava la stringa <em>prima</em> della decodifica, ma il file system la usa{" "}
-          <em>dopo</em>. Regola: non validare sulla forma di superficie — canonicalizza prima
-          (normalizza il percorso), poi decidi.
+          Cosa è successo: il filtro controllava la stringa <em>prima</em> che venisse decodificata
+          (%2e%2e%2f non contiene «..»), ma il file system leggeva <em>dopo</em> la decodifica, quando
+          %2e%2e%2f era tornato ../. La difesa vera è decodificare la stringa per prima cosa e
+          controllare solo la forma finale del percorso.
         </SuccessNote>
       )}
     </div>

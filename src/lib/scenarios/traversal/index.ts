@@ -81,10 +81,10 @@ export const traversalScenario: Scenario = {
       brief:
         "Il server oggi filtra i \"..\" letterali. Codifica i caratteri in %2e%2e%2f per farli passare.",
       details:
-        "La prima difesa che uno sviluppatore prova quasi sempre è: «se nella stringa ci sono due punti attaccati, blocco». Funziona in modo molto limitato. Il browser (o chiunque componga la richiesta HTTP) può codificare qualunque carattere: %2e è ., %2f è /. Quando la stringa arriva al server, il filtro non vede più «..», ma il decoder che sta dietro sì.\n\nQuesto è un esempio di una regola più generale: non validare mai una stringa nella sua forma di superficie. Prima rendila canonica (decodifica, normalizza, risolvi i simboli speciali), poi decidi se accettarla.",
+        "Immagina cosa fa lo sviluppatore per difendersi: guarda la stringa che arriva e controlla se contiene «..». Se c'è, blocca la richiesta. Sembra ragionevole.\n\nMa c'è un dettaglio che rompe tutto: la stringa che il filtro vede NON è la stessa che il file system apre. Prima del controllo, qualcosa (il framework web) decodifica i caratteri speciali dell'URL: %2e torna a essere . e %2f torna a essere /.\n\nSegui la richiesta passo passo:\n\n1. Tu scrivi: ?file=%2e%2e%2f — non c'è nessun «..» visibile.\n2. Il filtro guarda la stringa codificata: non trova «..», quindi lascia passare.\n3. Il decoder trasforma %2e%2e%2f in ../\n4. Il file system apre ../ — e il traversal funziona lo stesso.\n\nIl problema è l'ordine: il filtro controlla PRIMA della decodifica, ma il file legge DOPO. Chi decodifica per ultimo decide cosa arriva al file system.\n\nDa qui una regola importante per chi costruisce applicazioni: non controllare mai una stringa «così com'è». Prima la rendi canonica — la decodi, la normalizzi, risolvi i simboli speciali — e poi decidi se accettarla.",
       hint: "?file=%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd",
       explanation:
-        "Filtro e decoder erano in ordine sbagliato: il filtro guardava PRIMA della decodifica, il file system leggeva DOPO. Chi decodifica per ultimo vince.",
+        "L'ordine era sbagliato: il filtro guardava la stringa PRIMA che venisse decodificata, mentre il file system leggeva DOPO. Hai scritto %2e%2e%2f: il filtro non vedeva nessun «..» e passava, ma il decoder lo trasformava in ../ e il file veniva aperto lo stesso. La difesa vera è decodificare prima e controllare dopo, sulla forma finale del percorso.",
       Simulation: Task05UrlEncoding,
     },
     {
