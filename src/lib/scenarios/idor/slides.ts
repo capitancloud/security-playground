@@ -65,7 +65,7 @@ export const idorSlides: Slide[] = [
   {
     kicker: "Task 07 · UUID",
     title: "Anche i numeri lunghi possono ingannare",
-    body: "Un UUID sembra una difesa perfetta: 32 caratteri esadecimali, trilioni di combinazioni. Ma non è magico: se generato male resta indovinabile, e la lunghezza dà solo un falso senso di sicurezza.",
+    body: "Un UUID sembra una difesa perfetta: 32 caratteri esadecimali, trilioni di combinazioni. Ma non è infallibile: se generato male resta indovinabile, e la lunghezza dà solo un falso senso di sicurezza.",
     note: "La difesa vera è la casualità crittografica: crypto.randomUUID() nel browser, gen_random_uuid() in PostgreSQL. E comunque resta una difesa in più, non un sostituto del controllo lato server.",
     bullets: [
       "crypto.randomUUID(): generazione sicura",
