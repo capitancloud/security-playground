@@ -54,12 +54,12 @@ export const reverseShellSlides: Slide[] = [
   {
     kicker: "Task 04 · Webshell in azione",
     title: "Carica la webshell, esegui comandi",
-    body: "Mettiamo in pratica: carichiamo cmd.aspx nel punto di upload — che oggi accetta qualunque tipo di file, anche i .aspx: grande difetto! — poi la apriamo nel browser e proviamo whoami (chi sono?), ipconfig (che indirizzo ha il server?) e dir (cosa c'è in questa cartella?).",
-    note: "Guarda la risposta di whoami: iis apppool\\defaultapppool. Non sei Administrator: sei un utente limitato. Puoi già leggere i file del sito, ma il vero salto sarà avere una shell interattiva.",
+    body: "Ora mettiamo in pratica tutto. Passo 1: carichiamo il file cmd.aspx nel punto di upload del sito. Il server dovrebbe bloccare i file .aspx (perché sono pericolosi), ma oggi accetta qualunque cosa: è un errore grave. Passo 2: apriamo cmd.aspx nel browser, scrivendo il suo indirizzo. Passo 3: gli mandiamo un comando e lui lo esegue sul server al posto nostro.",
+    note: "Con il comando whoami il server risponde: iis apppool\\defaultapppool. Significa che non siamo Administrator, ma un utente limitato. Non basta per controllare tutto il server — ecco perché dopo useremo una vera shell interattiva.",
     bullets: [
-      "Comandi utili: whoami, hostname, ipconfig, dir",
-      "L'upload accetta qualunque estensione: difetto elementare",
-      "Ogni comando finisce nei log: attacco rumoroso ma efficace",
+      "Chi siamo? → whoami. Come si chiama il server? → hostname",
+      "Che indirizzo ha? → ipconfig. Cosa c'è in questa cartella? → dir",
+      "Il difetto: l'upload accetta file .aspx senza controllare nulla",
     ],
     accent: "danger",
     icon: "Terminal",
