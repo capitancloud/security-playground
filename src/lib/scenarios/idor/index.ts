@@ -79,7 +79,7 @@ export const idorScenario: Scenario = {
       title: "Scarica un file riservato",
       goal: "IDOR su download",
       brief:
-        "Un endpoint di download accetta l'id del file. Prova a scaricare un documento Riservato.",
+        "Un endpoint per il download accetta l'id del file. Prova a scaricare un documento Riservato.",
       details:
         "Molte applicazioni servono file (PDF, immagini, allegati) tramite endpoint del tipo /download?doc=42. Sono uno dei bersagli più comuni di IDOR perché spesso lo sviluppatore pensa «tanto il link glielo mando io per email, nessuno indovinerà l'id». È un ragionamento sbagliato: security through obscurity non è sicurezza.\n\nQui hai un elenco di documenti pubblici a cui puoi accedere. Prova a cambiare l'id nella URL e a chiedere documenti che nell'elenco non compaiono. Alcuni sono marcati come «Riservato» — non dovresti poterli aprire, ma il server non verifica.\n\nNel mondo reale sono così che sono state esposte cartelle cliniche, contratti, foto private, buste paga. Molti casi noti (Facebook, Verizon, First American) sono partiti proprio da un id incrementale in un URL di download.",
       hint: "Prova doc=87 o doc=88.",
