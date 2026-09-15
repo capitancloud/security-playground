@@ -102,12 +102,12 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 08-09 · Il vero obiettivo",
     title: "Rubare le password nei file di configurazione",
-    body: "Un attaccante non si accontenta di /etc/passwd: il vero obiettivo sono app.conf, .env, database.yml, web.config — file che spesso contengono in chiaro utente e password del database, chiavi API, token cloud. E l'input non arriva solo dalla URL: anche un messaggio API con un campo filename può finire in una apertura di file.",
-    note: "Con utente e password del database, l'attaccante entra direttamente senza passare per l'applicazione, saltando tutti i controlli. Difese: non mandare mai nomi di file dal client (usa un numero nel database, e il server trova da solo il percorso) e tenere le password fuori dai file — variabili d'ambiente o secret manager.",
+    body: "Leggere /etc/passwd è solo un esercizio: lì dentro non ci sono password utilizzabili. Il vero bottino sono altri file: app.conf, .env, database.yml, web.config. Quelli sì che contengono spesso utente e password del database scritti in chiaro, più chiavi API e token cloud. Attenzione a un dettaglio: l'attacco non passa solo dalla URL. Anche un messaggio API con un campo chiamato filename arriva sul server e finisce, se non controllato, in un'apertura di file.",
+    note: "Con utente e password del database in mano, l'attaccante entra direttamente nel database, senza passare dall'applicazione: salta ogni controllo. Le difese sono due. Primo: non mandare mai il nome del file dal browser — manda un numero, e il server cerca da solo il percorso vero. Secondo: tieni le password fuori dai file, in variabili d'ambiente o in un gestore di segreti.",
     bullets: [
-      "app.conf / .env / database.yml: password in chiaro",
-      "Messaggi API, header, cookie: tutto input che si può cambiare",
-      "Numeri opachi + secret manager = il difetto sparisce del tutto",
+      "app.conf, .env, database.yml: spesso contengono la password del database in chiaro",
+      "Il campo filename di un messaggio API vale quanto la URL: è input e si può cambiare",
+      "Se il browser manda solo un numero e le password non stanno nei file, il difetto sparisce",
     ],
     accent: "danger",
     icon: "Vault",
