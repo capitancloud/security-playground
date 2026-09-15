@@ -117,12 +117,12 @@ export const reverseShellSlides: Slide[] = [
   {
     kicker: "Task 09-10 · Difese e sintesi",
     title: "Cosa funziona davvero: difese e quiz",
-    body: "Ragioniamo al contrario: dato l'attacco appena provato, quali chiusure avrebbero fermato la catena? Nel task 9 scegli tu le difese vere, scartando quelle solo apparenti; nel task 10 il quiz di 10 domande riassume tutto lo scenario.",
-    note: "Le difese che funzionano: chiudere il triangolo dell'upload, non far eseguire i file caricati, dare privilegi minimi al sito e impedire al server di collegarsi fuori. Se sbagli il quiz, torna al task corrispondente — non c'è penalità nel riprovare.",
+    body: "Ora ragioniamo al contrario: l'attacco ha funzionato, ma bastava una sola chiusura per fermarlo. Nel task 9 vedrai un elenco di difese e dovrai scegliere solo quelle vere, scartando quelle che sembrano funzionare ma non bloccano nulla. Nel task 10 un quiz di 10 domande ripassa tutto lo scenario.",
+    note: "Ripassiamo le quattro difese vere: i file caricati non devono poter partire (non eseguibili), il sito gira con pochi privilegi, il server non può collegarsi a internet a sua scelta e la cartella di upload è isolata. Se sbagli una domanda del quiz, puoi riprovare senza problemi.",
     bullets: [
-      "1 · Non far eseguire gli .aspx caricati (accessPolicy=\"Read\")",
-      "2 · Application pool con privilegi minimi",
-      "3 · Impedire al server di collegarsi fuori (egress filtering)",
+      "1 · I file caricati non devono partire: in IIS si imposta accessPolicy=\"Read\" così gli .aspx vengono solo letti, mai eseguiti",
+      "2 · Pochi privilegi al sito: anche se un attaccante entra, l'utente IIS può fare pochissime cose",
+      "3 · Il server non chiama fuori: bloccando le connessioni in uscita, la reverse shell non riesce a raggiungere l'attaccante",
     ],
     accent: "success",
     icon: "ShieldCheck",
