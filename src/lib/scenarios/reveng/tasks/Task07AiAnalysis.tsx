@@ -26,7 +26,7 @@ const PROMPTS: Prompt[] = [
     good: true,
     answer: [
       "ANALISI",
-      "• Lo script decodifica un blob Base64 (UTF-16 LE) tramite -EncodedCommand.",
+      "• Lo script decodifica un blocco Base64 (UTF-16 LE) tramite -EncodedCommand.",
       "• Il payload interno scrive una chiave nel registro Run di HKCU con nome 'OneDriveSync':",
       "  → esecuzione automatica a ogni login dell'utente (tecnica MITRE ATT&CK T1547.001).",
       "• Il valore della chiave lancia un secondo powershell.exe che scarica http://185.77.224.12/a.ps1",

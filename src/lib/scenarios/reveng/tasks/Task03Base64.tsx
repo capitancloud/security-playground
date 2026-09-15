@@ -44,7 +44,7 @@ export default function Task03Base64({ markComplete, isComplete }: TaskContext) 
       <div className="rounded-xl border border-border bg-surface p-4">
         <div className="mb-2 flex items-center justify-between">
           <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
-            Blob Base64 — flag -EncodedCommand (UTF-16 LE)
+            Blocco Base64 — flag -EncodedCommand (UTF-16 LE)
           </span>
           <button
             onClick={paste}
