@@ -93,8 +93,13 @@ export const revengSlides: Slide[] = [
   {
     kicker: "Task 08 · Verifica",
     title: "Capire cosa fa davvero lo script",
-    body: "L'AI ti ha dato la sua analisi. Ma un'analisi automatica non va presa per buona: verificarla è il tuo lavoro. L'AI ti dà un punto di partenza, non una conclusione.\nNel task fai esattamente questo: classifichi tu il comportamento reale dello script, scegliendo le categorie giuste tra quelle proposte. Si avvia da solo al riavvio? Scarica file da internet? Li esegue? Se le tue risposte combaciano con quello che hai letto nei task precedenti, l'analisi è corretta.",
-    note: "Mai fidarsi ciecamente di un'analisi automatica: è il punto di partenza, non la conclusione. La verifica umana è parte del lavoro.",
+    body: "L'AI ti ha restituito la sua analisi. Ma attenzione: un'analisi automatica è un punto di partenza, non una conclusione. L'AI può sbagliare, o lasciarsi ingannare proprio dal codice che sta analizzando — per questo il suo lavoro va sempre controllato.\nCome si controlla in pratica? Nel task vedi l'analisi dell'AI accanto a un elenco di categorie: si avvia da solo al riavvio, scarica file da internet, esegue i file scaricati, e così via. Il tuo compito è segnare soltanto le categorie che hai davvero visto nello script durante i task precedenti: il download nella cartella dei file temporanei, la chiave Run del registro, il comando eseguito.\nSe quello che segnali combacia con l'analisi, la classificazione è corretta. Se non combacia, hai appena trovato un errore dell'AI — ed è esattamente per questo che la verifica serve.",
+    note: "La regola da ricordare: l'AI ti dà la mappa, ma sei tu a controllare che la strada ci sia davvero. La verifica con i tuoi occhi è parte del lavoro, non un passaggio facoltativo.",
+    bullets: [
+      "L'analisi dell'AI è un'ipotesi: va confrontata con quello che hai letto tu stesso nello script",
+      "Nel task segnali solo i comportamenti che hai davvero visto nei task precedenti — niente di più",
+      "Se le tue scelte e l'analisi combaciano, la classificazione è affidabile; se no, hai trovato un errore dell'AI",
+    ],
     accent: "danger",
     icon: "ClipboardCheck",
   },
