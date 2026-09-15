@@ -93,7 +93,7 @@ export const traversalSlides: Slide[] = [
     note: "Oggi i sistemi moderni bloccano il null byte, quindi questo trucco non funziona quasi più. Ma resta il pattern di fondo: due componenti leggono la stessa stringa in modo diverso — uno la taglia, l'altro la legge intera. Ogni volta che due parti non sono d'accordo, nasce una vulnerabilità.",
     bullets: [
       "Difesa del server: «all'input aggiungo io .txt alla fine»",
-      "Trucco: passwd\0.txt — il null byte taglia via il .txt",
+      "Trucco: passwd%00.txt — il null byte taglia via il .txt",
       "Il controllo vede .txt, il file aperto è passwd",
       "Oggi bloccato, ma il pattern «due letture diverse» torna sempre",
     ],
