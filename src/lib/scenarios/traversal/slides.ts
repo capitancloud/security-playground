@@ -75,12 +75,13 @@ export const traversalSlides: Slide[] = [
   {
     kicker: "Task 06 · Due sistemi che decodificano",
     title: "Codificare due volte con %25",
-    body: "Spesso la richiesta passa per più sistemi — proxy, framework, application server — e ognuno può decodificare i caratteri. Se il filtro sta in mezzo, puoi codificare due volte il payload: %252e diventa %2e dopo il primo giro, e . dopo il secondo.",
-    note: "Morale: decodifica una volta sola, in un solo posto, poi controlla. Ogni sistema in più è una nuova occasione per sbagliare — la difesa non è regex, è verificare dove finisce il percorso assoluto.",
+    body: "A volte il filtro non sta da solo: la richiesta passa prima per altri sistemi (proxy, framework, application server), e qualcuno di questi decodifica i caratteri %2e e %2f. Il trucco qui è codificare due volte: ricordati che il simbolo % stesso si scrive %25. Quindi per ottenere . scrivi prima %2e, poi codifichi di nuovo il suo % e ottieni %252e. Al primo giro un sistema converte %25 in %, e la stringa diventa %2e. Al secondo giro il filtro la controlla... ma se il controllo avviene prima dell'ultima decodifica, il punto vero appare solo dopo.",
+    note: "Morale: decodifica una volta sola, in un solo posto, e solo dopo controlla il percorso finale. Ogni sistema che decodifica in più è una nuova occasione per sbagliare.",
     bullets: [
-      "%25 = % · quindi %252e → %2e → .",
-      "Il filtro vedeva una stringa pulita, il file system riceveva i ../ veri",
-      "Verifica dove finisce il percorso assoluto",
+      "%25 = % · quindi: . → %2e → %252e",
+      "Primo giro: %252e → %2e · Secondo giro: %2e → .",
+      "Il filtro vede una stringa pulita, il file system riceve i ../ veri",
+      "Difesa: decodifica tutto, poi controlla dove finisce il percorso",
     ],
     accent: "danger",
     icon: "Shuffle",
