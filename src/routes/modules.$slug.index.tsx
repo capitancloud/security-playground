@@ -4,6 +4,21 @@ import { getScenario } from "@/lib/scenarios";
 import { useProgress } from "@/hooks/useProgress";
 
 export const Route = createFileRoute("/modules/$slug/")({
+  head: ({ params }) => {
+    const scenario = getScenario(params.slug);
+    const title = scenario ? `${scenario.title} — Black Mirror Lab` : "Scenario — Black Mirror Lab";
+    const description = scenario?.intro ?? "Scenario didattico interattivo di Black Mirror Lab.";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
+      ],
+    };
+  },
   component: ModuleIntro,
 });
 

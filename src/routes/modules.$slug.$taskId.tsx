@@ -7,6 +7,22 @@ import { cn } from "@/lib/utils";
 import { RichText } from "@/components/lab/RichText";
 
 export const Route = createFileRoute("/modules/$slug/$taskId")({
+  head: ({ params }) => {
+    const scenario = getScenario(params.slug);
+    const task = scenario?.tasks.find((item) => item.id === params.taskId);
+    const title = task ? `${task.title} — Black Mirror Lab` : "Micro-task — Black Mirror Lab";
+    const description = task?.brief ?? "Esercitazione interattiva di Black Mirror Lab.";
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary" },
+      ],
+    };
+  },
   component: TaskPage,
 });
 
